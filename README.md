@@ -24,7 +24,6 @@ El script realiza las siguientes acciones:
 Antes de ejecutar el proyecto, asegúrate de tener instalados los siguientes requisitos:
 
 - Docker
-- Docker Compose
 
 ## Variables de Entorno
 
