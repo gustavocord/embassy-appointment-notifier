@@ -15,6 +15,7 @@ chrome_options.add_argument("--headless")
 
 chrome_options.add_argument("--disable-gpu")
 
+
 async def send_message_to_channel():
     
     TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
@@ -47,6 +48,8 @@ async def main():
     try:
         driver.get(url)
 
+        click_element(driver, By.XPATH, "//select[@id='Language']/option[text()='Español']", "seleccionar la opción")
+    
         click_element(driver, By.XPATH, "//select[@id='Office']/option[text()='BUENOS-AIRES']", "seleccionar la opción")
 
         click_element(driver, By.XPATH, "//input[@type='submit']", "hacer clic en el botón Continuar")
@@ -56,6 +59,10 @@ async def main():
         click_element(driver, By.XPATH, "//input[@type='submit']", "hacer clic en el botón Continuar")
 
         click_element(driver, By.XPATH, "//input[@type='submit']", "hacer clic en el botón Continuar")
+  
+        click_element(driver, By.XPATH, "//input[@type='submit' and @value='Continuar']", "hacer clic en el botón Continuar")
+ 
+        click_element(driver, By.XPATH, "//input[@type='submit' and @value='Continuar']", "hacer clic en el botón Continuar")
 
         html_after_interaction = driver.page_source
 
