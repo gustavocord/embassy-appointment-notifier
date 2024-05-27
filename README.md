@@ -1,4 +1,4 @@
-# Proyecto de Automatización con Selenium y Notificación por Telegram
+# Proyecto de Automatización con Selenium y envio de notificación por Telegram
 
 Este proyecto utiliza Selenium para automatizar la interacción con la web de la embajada de Austria y envia una notificación a un canal de Telegram cuando se libera un cupo para una cita.
 
