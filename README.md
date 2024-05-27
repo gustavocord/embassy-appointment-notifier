@@ -81,13 +81,13 @@ Para ejecutar el proyecto, utiliza los siguientes comandos:
 1. Construye la imagen de Docker:
 
     ```
-    Docker build -t mi-apliacion
+    Docker build -t <nombre_imagen>
     ```
 
 2. Inicia el contenedor:
 
     ```
-    Docker run -e TELEGRAM_BOT_TOKEN=<TELEGRAM_BOT_TOKEN> -e TELEGRAM_CHANNEL_USERNAME=<TELEGRAM_CHANNEL_USERNAME> <nombre_imagen>:<tag>
+    Docker run -t <nombre_imagen>
     ```
 
 ## Licencia
