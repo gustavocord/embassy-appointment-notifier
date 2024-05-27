@@ -74,38 +74,20 @@ Tu archivo `Dockerfile` se verá de la siguiente manera:
     CMD ["python", "app.py"]
     ```
 
-### docker-compose.yml
-
-Asegúrate de tener un archivo `docker-compose.yml` como el siguiente:
-
-    ```yaml
-    version: '3'
-    services:
-      web:
-        build: .
-        env_file:
-          - .env
-        volumes:
-          - .:/app
-        environment:
-          - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
-          - TELEGRAM_CHANNEL_USERNAME=${TELEGRAM_CHANNEL_USERNAME}
-    ```
-
 ## Ejecución
 
 Para ejecutar el proyecto, utiliza los siguientes comandos:
 
 1. Construye la imagen de Docker:
 
-    ```sh
-    docker-compose build
+    ```
+    Docker build -t mi-apliacion
     ```
 
 2. Inicia el contenedor:
 
-    ```sh
-    docker-compose up
+    ```
+    Docker run -e TELEGRAM_BOT_TOKEN=<TELEGRAM_BOT_TOKEN> -e TELEGRAM_CHANNEL_USERNAME=<TELEGRAM_CHANNEL_USERNAME> <nombre_imagen>:<tag>
     ```
 
 ## Licencia
