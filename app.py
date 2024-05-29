@@ -16,19 +16,16 @@ chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-gpu")
 
 
-async def send_message_to_channel():
+async def send_message_to_channel(token,channel):
     
-    TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
-
-    TELEGRAM_CHANNEL_USERNAME = os.getenv('TELEGRAM_CHANNEL_USERNAME')
-
     notification_message = "¡Se liberó un cupo para la embajada!"
 
-    bot = telegram.Bot(token=TELEGRAM_BOT_TOKEN)
+    bot = telegram.Bot(token=token)
 
-    await bot.send_message(chat_id=TELEGRAM_CHANNEL_USERNAME, text=notification_message)
+    await bot.send_message(chat_id=channel, text=notification_message)
 
     print(f"Mensaje enviado al canal de Telegram: '{notification_message}'")
+    
 
 def click_element(driver, by, value, error_message):
     try:
@@ -40,6 +37,14 @@ def click_element(driver, by, value, error_message):
         print(f"No se pudo {error_message}: {e}")
 
 async def main():
+
+    TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+
+    TELEGRAM_CHANNEL_USERNAME = os.getenv('TELEGRAM_CHANNEL_USERNAME')
+
+    if not (TELEGRAM_CHANNEL_USERNAME and TELEGRAM_CHANNEL_USERNAME): 
+        print("El token del bot o el nombre del canal no estan presente ") 
+        return
 
     url = "http://appointment.bmeia.gv.at"
 
@@ -73,7 +78,7 @@ async def main():
         phrase_to_check = "Actualmente no hay fechas disponibles en el horario elegido"
 
         if  not(error_message and phrase_to_check in error_message.get_text()):
-            await send_message_to_channel()
+            await send_message_to_channel(TELEGRAM_BOT_TOKEN, TELEGRAM_CHANNEL_USERNAME)
 
     finally:
 
