@@ -25,7 +25,7 @@ async def send_message_to_channel(token,channel):
     await bot.send_message(chat_id=channel, text=notification_message)
 
     print(f"Mensaje enviado al canal de Telegram: '{notification_message}'")
-    
+
 
 def click_element(driver, by, value, error_message):
     try:
@@ -79,6 +79,9 @@ async def main():
 
         if  not(error_message and phrase_to_check in error_message.get_text()):
             await send_message_to_channel(TELEGRAM_BOT_TOKEN, TELEGRAM_CHANNEL_USERNAME)
+
+        else:
+            print("No hay cupos disponibles")
 
     finally:
 
